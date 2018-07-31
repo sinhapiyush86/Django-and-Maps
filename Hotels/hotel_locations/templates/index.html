@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>Dishq_Challenge</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <!script to initialise maps from google map api>
+    <!arrayofobjects contains serialised data from views.py refered by key data>
+    <script>
+      var map;
+      function initMap() {
+
+        var infowindow = new google.maps.InfoWindow({});
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 12.984321, lng: 77.600126},
+          zoom: 15});
+        var marker, i;
+        var locations = [];
+        var $arrayOfObjects = {{data|safe}};
+for (var i = 0; i < $arrayOfObjects.length; i++)
+    {   var object = $arrayOfObjects[i];
+	   locations.push([object.name,object.rating,object.urls,object.location])
+    }
+        var $arrayOfObjects = {{data|safe}};
+for (var i = 0; i < $arrayOfObjects.length; i++) {
+
+        var object = $arrayOfObjects[i];
+        var uluru = {lat: parseFloat(object.latitude), lng:parseFloat(object.longitude)};
+        marker = new google.maps.Marker({position:uluru,map: map});
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+			return function () {
+				infowindow.setContent(locations[i][0]+"<br> rating:"+locations[i][1]+"<br>Location:"+locations[i][3]+"<br> Url:"+locations[i][2]);
+				infowindow.open(map, marker);
+			}
+		})(marker, i));
+
+
+	                                                 }
+
+
+
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWt8tYZulrk7LJ1-canY86Pfi9q61KnKE&callback=initMap"
+            async defer></script>
+
+
+
+  </body>
+
+</html>

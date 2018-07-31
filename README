@@ -1,0 +1,27 @@
+LOCATIONS OF FILE:
+	scrapping.py(File to scrap data into json): /scrapping.py
+	final_json.json				    /finaljson.json
+	Django Project Hotels			    /Hotels
+	manage.py to start server		    /Hotels/manage.py
+	index.html page(contains html for loading maps api)	/Hotels/hotel_locations/templates/index.html
+
+Version used : Python 3.5.2
+	       django 2.0.1
+	       BeautifulSoup '4.6.0'
+
+Operating System: Ubuntu 16.0.4
+ 
+
+STARTING SERVER:  	python manage.py runserver
+		  if multiple python version in system then:
+			python3 manage.py runserver
+
+LINK REFERENCES: MAIN PAGE: http://localhost:8000/hotels/map/
+		 Starting Scrapping http://localhost:8000/scrapping/start
+		 API Link : http://localhost:8000/hotels/import/
+		 ADMIN PAGE TO MANAGE DATABASE: localhost:8000/admin/
+						uesrname:piyush
+						password:dishq@123
+
+The port 8000 may change according to the available port in system.
+
